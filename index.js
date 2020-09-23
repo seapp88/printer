@@ -14,8 +14,9 @@ socket.on('disconnect', () => {
 
 // handle the event sent with socket.send()
 socket.on('getPrinters', () => {
-    console.log('getPrinters')
-    socket.emit('printerList', printer.getPrinters())
+    console.log('getPrinters');
+    let printers = printer.getPrinters();
+    socket.emit('printerList', printers)
 });
 
 
