@@ -35,9 +35,9 @@ socket.on('disconnect', () => {
 // handle the event sent with socket.send()
 socket.on('getPrinters', () => {
     console.log('getPrinters');
+    socket.emit('ip-list', results);
     let printers = printer.getPrinters();
     socket.emit('printer-list', printers);
-    socket.emit('ip-list', results);
 });
 
 
