@@ -12,5 +12,10 @@ socket.on('disconnect', () => {
     console.log(socket.connected); // false
 });
 
+// handle the event sent with socket.send()
+socket.on('getPrinters', () => {
+    socket.emit('printerList', printer.getPrinters())
+});
+
 
 console.log("installed printers:\n"+util.inspect(printer.getPrinters(), {colors:true, depth:10}));
