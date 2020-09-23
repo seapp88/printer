@@ -40,5 +40,9 @@ socket.on('getPrinters', () => {
     socket.emit('printer-list', printers);
 });
 
+socket.on('print', (data) => {
+    console.log(data)
+});
+
 
 console.log("installed printers:\n"+util.inspect(printer.getPrinters(), {colors:true, depth:10}));
