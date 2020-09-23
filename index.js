@@ -42,6 +42,14 @@ socket.on('getPrinters', () => {
 
 socket.on('print', (data) => {
     console.log(data)
+    printer.printDirect({
+        data: data.zpl,
+        printer: data.printer,
+        type: "RAW",
+        success:function(){
+            console.log("printed:");
+        }, error:function(err){console.log(err);}
+    });
 });
 
 
