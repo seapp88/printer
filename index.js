@@ -2,7 +2,7 @@ const printer = require("printer");
 const util = require('util');
 const io = require('socket.io-client');
 
-const socket = io('http://10.10.10.10:3000');
+const socket = io('https://alivero.jelastic.regruhosting.ru/');
 
 const { networkInterfaces } = require('os');
 
