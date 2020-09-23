@@ -7,7 +7,7 @@ const socket = io('http://10.10.10.10:3000');
 const { networkInterfaces } = require('os');
 
 const nets = networkInterfaces();
-const results = Object.create(null); // or just '{}', an empty object
+const results = {}; // or just '{}', an empty object
 
 for (const name of Object.keys(nets)) {
     for (const net of nets[name]) {
