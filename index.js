@@ -16,7 +16,7 @@ socket.on('disconnect', () => {
 socket.on('getPrinters', () => {
     console.log('getPrinters');
     let printers = printer.getPrinters();
-    socket.emit('printerList', printers)
+    socket.emit('printerList')
 });
 
 
