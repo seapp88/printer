@@ -7,17 +7,17 @@ const socket = io('http://10.10.10.10:3000');
 const { networkInterfaces } = require('os');
 
 const nets = networkInterfaces();
-const results = {}; // or just '{}', an empty object
+const results = []; // or just '{}', an empty object
 
 for (const name of Object.keys(nets)) {
     for (const net of nets[name]) {
         // skip over non-ipv4 and internal (i.e. 127.0.0.1) addresses
         if (net.family === 'IPv4' && !net.internal) {
-            if (!results[name]) {
-                results[name] = [];
+            if (!results.filter(i => i.name === name)[0]) {
+                // results[name] = [];
             }
 
-            results[name].push(net.address);
+            results.push({name, address: net.address});
         }
     }
 }
