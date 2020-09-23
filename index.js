@@ -4,6 +4,10 @@ const io = require('socket.io-client');
 
 const socket = io('http://10.10.10.10:3000');
 
+require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+    console.log('addr: '+add);
+})
+
 socket.on('connect', () => {
     console.log(socket.connected); // true
 });
