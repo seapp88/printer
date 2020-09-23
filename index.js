@@ -4,9 +4,25 @@ const io = require('socket.io-client');
 
 const socket = io('http://10.10.10.10:3000');
 
-require('dns').lookup(require('os').hostname(), function (err, add, fam) {
-    console.log('addr: '+add);
-})
+const { networkInterfaces } = require('os');
+
+const nets = networkInterfaces();
+const results = Object.create(null); // or just '{}', an empty object
+
+for (const name of Object.keys(nets)) {
+    for (const net of nets[name]) {
+        // skip over non-ipv4 and internal (i.e. 127.0.0.1) addresses
+        if (net.family === 'IPv4' && !net.internal) {
+            if (!results[name]) {
+                results[name] = [];
+            }
+
+            results[name].push(net.address);
+        }
+    }
+}
+
+console.log(results)
 
 socket.on('connect', () => {
     console.log(socket.connected); // true
